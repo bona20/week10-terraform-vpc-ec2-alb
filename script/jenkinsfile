@@ -2,16 +2,23 @@ pipeline{
     agent any
 
     stages{
-        stage ('init'){
+        stage ("clean"){
             steps{
-                sh 'terraform init'
+            sh 'mvn clean validate compile install test package'
             }
         }
+    }
+}
+
+/*
+
         stage ('validate'){
             steps{
                 sh 'terraform validate'
             }
         }
+    }
+    
         stage ('format'){
             steps{
                 sh 'terraform fmt'
@@ -25,3 +32,4 @@ pipeline{
     }
 
 }
+*/
